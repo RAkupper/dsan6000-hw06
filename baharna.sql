@@ -1,0 +1,12 @@
+SELECT
+  cast(sum(population) as integer) AS total_population
+FROM full_2020
+WHERE
+  month='2019-06'
+  AND type='total_population'
+  AND country='SAU'
+  AND ST_Within(
+    ST_Point(longitude, latitude),
+    ST_Polygon('POLYGON ((48.2837208 28.7425526,48.4072737 25.5939361,49.3504019 23.5668336,50.0954408 24.4232866,50.7238276 24.763276,50.5371532 26.8902804,48.7001436 29.8387997,48.1267351 29.6437846,47.9957939 30.2494642,48.2837208 28.7425526))')
+  );
+
